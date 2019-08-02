@@ -8,7 +8,7 @@ def get_questions_df(file_name):
 
 if __name__ == "__main__":
     print("Set up a simple CLI to offer hints, and throw up a timer.")
-    df = get_questions_df("./two.tsv")
+    df = get_questions_df("./data/two.tsv")
     new_df = df.sample(n=1)
     q = list(new_df["Question"])[0]
     t = list(new_df["Title"])[0]
