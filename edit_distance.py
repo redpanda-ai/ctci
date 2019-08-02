@@ -27,3 +27,5 @@ tests = [
 for s1, s2 in tests:
     ed = edit_distance(s1, s2)
     print(f"S1: {s1}, S2:{s2}, edit_distance: {ed}")
+
+print("done")
