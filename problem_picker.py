@@ -44,21 +44,38 @@ if __name__ == "__main__":
     new_df = df.sample(n=1)
     question = list(new_df["Question"])[0]
     title = list(new_df["Title"])[0]
-    cprint(f"Title:", "green")
+    cprint("Title:", "green")
     print(f"{title}\n")
-    cprint(f"Question:", "yellow")
+    cprint("Question:", "yellow")
     print(f"{question}\n")
 
-    cprint("Time Remaining", 'red')
-
     # Show a timer
-    for remaining in tqdm(range(args.time_for_problem)):
-        time.sleep(1)
+    cprint("You can press CTRL + C at any time to stop the timer", "blue")
+    cprint("Time Remaining", 'red')
+    keep_running = True
+    try:
+        while keep_running:
+            for counter in tqdm(range(args.time_for_problem)):
+                time.sleep(1)
 
-    # Sound an audible timer for when the time is up.
+            # Sound an audible timer for when the time is up.
+            for i in range(5):
+                print("\007")
+                time.sleep(0.25)
+
+            keep_running = False
+    except KeyboardInterrupt:
+        cprint(f"Processing keyboard interrupt.", "blue")
+
+    if not keep_running:
+        print(f"Time's up!")
+    else:
+        print(f"There were {args.time_for_problem - counter} seconds remaining.")
+
     major = list(new_df["Major"])[0]
     minor = list(new_df["Minor"])[0]
-    print(f"\nI asked you to solve question {major}.{minor}")
-    for i in range(5):
-        print("\007")
-        time.sleep(0.25)
+    print(f"\nI asked you to solve question {major}.{minor} in {args.time_for_problem} seconds")
+
+
+
+
