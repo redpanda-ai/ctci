@@ -19,10 +19,12 @@ def get_all_questions(directory_path):
     for filename in os.listdir(directory_path):
         if filename.endswith(".tsv"):
             path_to_file = f"{directory_path}/{filename}"
-            print(f"Adding {path_to_file}")
+            # print(f"Adding {path_to_file}")
             dfs.append(get_questions_df(path_to_file))
 
-    return pd.concat(dfs, sort=False)
+    df = pd.concat(dfs, sort=False)
+    print(f"Loading {df.shape[0]} questions from {len(dfs)} files.")
+    return df
 
 
 if __name__ == "__main__":
@@ -40,12 +42,12 @@ if __name__ == "__main__":
 
     # Display a random question
     new_df = df.sample(n=1)
-    q = list(new_df["Question"])[0]
-    t = list(new_df["Title"])[0]
+    question = list(new_df["Question"])[0]
+    title = list(new_df["Title"])[0]
     cprint(f"Title:", "green")
-    print(f"\t{t}")
+    print(f"{title}\n")
     cprint(f"Question:", "yellow")
-    print(f"\t{q}")
+    print(f"{question}\n")
 
     cprint("Time Remaining", 'red')
 
@@ -54,7 +56,9 @@ if __name__ == "__main__":
         time.sleep(1)
 
     # Sound an audible timer for when the time is up.
-    print("\nTime's up!")
+    major = list(new_df["Major"])[0]
+    minor = list(new_df["Minor"])[0]
+    print(f"\nI asked you to solve question {major}.{minor}")
     for i in range(5):
         print("\007")
         time.sleep(0.25)

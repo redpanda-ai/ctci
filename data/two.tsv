@@ -2,7 +2,8 @@ Major	Minor	Question	Title
 2	1	Write Code to remove duplicates from an unsorted linked list.	Remove Dups
 2	2	Implement an algorithm to find the kth to last element of a singly linked list	Return Kth to Last
 2	3	Implement an algorithm to delete a node in the middle (i.e., any node but the first and last node, not necessarily in the exact middle) of a singly linked list, given only access to that node.	Delete Middle Node
-2	4	"Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x. (IMPORTANT: The partition element x can appear anywhere in the ""right partition""; it does not need to appear between the left and right partitions."	Partition
+2	4	"Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x.
+IMPORTANT: The partition element x can appear anywhere in the ""right partition""; it does not need to appear between the left and right partitions."	Partition
 2	5	"You have two numbers represented by a linked list, where each node contains a single digit.  The digits are stored in reverse order, such that the 1's digit is at the head of the list.  Write a function that adds the two digit numbers and returns the sum as a linked list. (You are not allowed to ""cheat"" and just convert the linked list to an integer.)"	Sum Lists
 2	6	Implement a function to check if a linked list is a palindrome.	Palindrome
 2	7	Given two (singly) linked lists, determine if two lists intersect.  Return the intersecting node.  Not that the intersection is defined based on reference, not value.  That is, if the kth node of the first linked list is the exact same node (by reference) as the jth node of the second linked list, then they are intersecting.	Intersection
