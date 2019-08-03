@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
     major = list(new_df["Major"])[0]
     minor = list(new_df["Minor"])[0]
-    print(f"\nI asked you to solve question {major}.{minor} in {args.time_for_problem} seconds")
+    print(f"\nThe program selected Chapter {major} Question {minor}")
 
 
 
