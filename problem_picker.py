@@ -1,8 +1,10 @@
-import pandas as pd
+import argparse
 import os
+import pandas as pd
 import time
-import sys
-from termcolor import colored, cprint
+
+from tqdm import tqdm
+from termcolor import cprint
 
 
 def get_questions_df(file_name):
@@ -22,8 +24,12 @@ def get_all_questions(directory_path):
 
 
 if __name__ == "__main__":
-    print("Set up a simple CLI to pick a random question, and throw up a timer.")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("time_for_problem", help="Number of seconds for the problem", type=int)
+    args = parser.parse_args()
+
     df = get_all_questions("./data")
+    input(f"You will have {args.time_for_problem} seconds to answer the question, press ENTER to start")
     new_df = df.sample(n=1)
     q = list(new_df["Question"])[0]
     t = list(new_df["Title"])[0]
@@ -32,10 +38,9 @@ if __name__ == "__main__":
     cprint(f"Question:", "yellow")
     print(f"\t{q}")
 
-    time_for_problem = 10
     cprint("Time Remaining", 'red')
-    for remaining in range(time_for_problem, 0, -1):
-        sys.stdout.write("\r")
-        sys.stdout.write(f"\t{remaining:4d} seconds.")
-        sys.stdout.flush()
+
+    for remaining in tqdm(range(args.time_for_problem)):
         time.sleep(1)
+
+    print("\nTime's up!")
