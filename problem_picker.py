@@ -2,38 +2,17 @@ import argparse
 import os
 import pandas as pd
 import pyperclip
-import time
 import sys
+import time
 
-from tqdm import tqdm
 from termcolor import cprint
+from tqdm import tqdm
 
 
-def get_questions_df(file_name):
-    """Grabs all questions in a single TSV file"""
-    df = pd.read_csv(file_name, sep="\t")
-    return df
-
-
-def get_all_questions(directory_path):
-    """Grabs all questions from a directory path and creates a big dataframe"""
-    dfs = []
-    for filename in os.listdir(directory_path):
-        if filename.endswith(".tsv"):
-            path_to_file = f"{directory_path}/{filename}"
-            # print(f"Adding {path_to_file}")
-            dfs.append(get_questions_df(path_to_file))
-
-    df = pd.concat(dfs, sort=False)
-    print(f"Loading {df.shape[0]} questions from {len(dfs)} files.")
-    return df
-
-
-def parse_arguments():
-    """Parses all command line arguments"""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("time_for_problem", help="Integer umber of seconds for the problem", type=int)
-    return parser.parse_args()
+def copy_to_clipboard(title, question):
+    """Copy the question as a doc-string into the system clipboard"""
+    cprint("Your question has been copied to your internal clipboard, you can now paste it into an editor", "yellow")
+    pyperclip.copy(f'"""\nTitle:\n\t{title}\nQuestion:\n\t{question}\n"""\n\n')
 
 
 def display_random_question(df):
@@ -48,18 +27,6 @@ def display_random_question(df):
     copy_to_clipboard(title, question)
 
     return new_df
-
-
-def system_bell():
-    """Make an audible tone"""
-    sys.stdout.write('\007')
-    sys.stdout.flush()
-
-
-def copy_to_clipboard(title, question):
-    """Copy the question as a doc-string into the system clipboard"""
-    cprint("Your question has been copied to your internal clipboard, you can now paste it into an editor", "yellow")
-    pyperclip.copy(f'"""\nTitle:\n\t{title}\nQuestion:\n\t{question}\n"""\n\n')
 
 
 def display_timer():
@@ -77,8 +44,6 @@ def display_timer():
             for i in range(5):
                 system_bell()
                 time.sleep(0.25)
-
-
     except KeyboardInterrupt:
         system_bell()
         cprint(f"Processing keyboard interrupt.", "blue")
@@ -89,14 +54,47 @@ def display_timer():
         print(f"You finished with {args.time_for_problem - counter} seconds remaining.")
 
 
+def get_all_questions(directory_path):
+    """Grabs all questions from a directory path and creates a big dataframe"""
+    dfs = []
+    for filename in os.listdir(directory_path):
+        if filename.endswith(".tsv"):
+            path_to_file = f"{directory_path}/{filename}"
+            # print(f"Adding {path_to_file}")
+            dfs.append(get_questions_df(path_to_file))
+
+    df = pd.concat(dfs, sort=False)
+    print(f"Loading {df.shape[0]} questions from {len(dfs)} files.")
+    return df
+
+
+def get_questions_df(file_name):
+    """Grabs all questions in a single TSV file"""
+    df = pd.read_csv(file_name, sep="\t")
+    return df
+
+
+def parse_arguments():
+    """Parses all command line arguments"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("time_for_problem", help="Integer umber of seconds for the problem", type=int)
+    return parser.parse_args()
+
+
+def system_bell():
+    """Make an audible tone"""
+    sys.stdout.write('\007')
+    sys.stdout.flush()
+
+
 if __name__ == "__main__":
-    """This script picks a random question and presents it to the user to solve in a limited amout of time"""
+    """This script picks a random question and presents it to the user to solve in a limited amount of time"""
     args = parse_arguments()
     # Collect questions from data directory
     df = get_all_questions("./data")
 
     # Prompt user to start
-    print(f"You will have {args.time_for_problem} seconds to answer the question, press ENTER to start")
+    print(f"You will have {args.time_for_problem} seconds to answer the question, good luck!")
     system_bell()
 
     new_df = display_random_question(df)
@@ -105,7 +103,3 @@ if __name__ == "__main__":
     chapter = list(new_df["Major"])[0]
     question = list(new_df["Minor"])[0]
     print(f"\nThe program selected Chapter {chapter} Question {question}")
-
-
-
-
