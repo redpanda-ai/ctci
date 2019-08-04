@@ -3,6 +3,7 @@ import os
 import pandas as pd
 import pyperclip
 import time
+import sys
 
 from tqdm import tqdm
 from termcolor import cprint
@@ -49,7 +50,14 @@ def display_random_question(df):
     return new_df
 
 
+def system_bell():
+    """Make an audible tone"""
+    sys.stdout.write('\007')
+    sys.stdout.flush()
+
+
 def copy_to_clipboard(title, question):
+    """Copy the question as a doc-string into the system clipboard"""
     cprint("Your question has been copied to your internal clipboard, you can now paste it into an editor", "yellow")
     pyperclip.copy(f'"""\nTitle:\n\t{title}\nQuestion:\n\t{question}\n"""\n\n')
 
@@ -64,14 +72,15 @@ def display_timer():
             for counter in tqdm(range(args.time_for_problem)):
                 time.sleep(1)
 
-            # Sound an audible timer for when the time is up.
+            # Sound an audible timer for when the time is up.'
+            keep_running = False
             for i in range(5):
-                print("\007")
+                system_bell()
                 time.sleep(0.25)
 
-            keep_running = False
+
     except KeyboardInterrupt:
-        print("\007")
+        system_bell()
         cprint(f"Processing keyboard interrupt.", "blue")
 
     if not keep_running:
@@ -87,8 +96,8 @@ if __name__ == "__main__":
     df = get_all_questions("./data")
 
     # Prompt user to start
-    input(f"You will have {args.time_for_problem} seconds to answer the question, press ENTER to start")
-    print("\007")
+    print(f"You will have {args.time_for_problem} seconds to answer the question, press ENTER to start")
+    system_bell()
 
     new_df = display_random_question(df)
     display_timer()
