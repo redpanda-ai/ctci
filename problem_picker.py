@@ -1,6 +1,7 @@
 import argparse
 import os
 import pandas as pd
+import pyperclip
 import time
 
 from tqdm import tqdm
@@ -43,13 +44,20 @@ def display_random_question(df):
     print(f"{title}\n")
     cprint("Question:", "yellow")
     print(f"{question}\n")
+    copy_to_clipboard(title, question)
+
     return new_df
+
+
+def copy_to_clipboard(title, question):
+    cprint("Your question has been copied to your internal clipboard, you can now paste it into an editor", "yellow")
+    pyperclip.copy(f'"""\nTitle:\n\t{title}\nQuestion:\n\t{question}\n"""\n\n')
 
 
 def display_timer():
     """Display a timer, that can be interrupted with CTRL + C"""
     cprint("You can press CTRL + C at any time to stop the timer", "blue")
-    cprint("Time Remaining", 'red')
+    cprint("Elapsed Time", 'red')
     keep_running = True
     try:
         while keep_running:
@@ -63,6 +71,7 @@ def display_timer():
 
             keep_running = False
     except KeyboardInterrupt:
+        print("\007")
         cprint(f"Processing keyboard interrupt.", "blue")
 
     if not keep_running:
@@ -79,6 +88,7 @@ if __name__ == "__main__":
 
     # Prompt user to start
     input(f"You will have {args.time_for_problem} seconds to answer the question, press ENTER to start")
+    print("\007")
 
     new_df = display_random_question(df)
     display_timer()
