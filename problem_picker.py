@@ -16,7 +16,7 @@ def copy_to_clipboard(title, question):
 
 
 def display_random_question(df):
-    """Display a random question selected from the supplied dataframe"""
+    """Display a random question selected from the supplied data frame"""
     new_df = df.sample(n=1)
     question = list(new_df["Question"])[0]
     title = list(new_df["Title"])[0]
@@ -55,7 +55,7 @@ def display_timer():
 
 
 def get_all_questions(directory_path):
-    """Grabs all questions from a directory path and creates a big dataframe"""
+    """Grabs all questions from a directory path and creates a big data frame"""
     dfs = []
     for filename in os.listdir(directory_path):
         if filename.endswith(".tsv"):
@@ -77,7 +77,7 @@ def get_questions_df(file_name):
 def parse_arguments():
     """Parses all command line arguments"""
     parser = argparse.ArgumentParser()
-    parser.add_argument("time_for_problem", help="Integer umber of seconds for the problem", type=int)
+    parser.add_argument("time_for_problem", help="Integer number of seconds for the problem", type=int)
     return parser.parse_args()
 
 
