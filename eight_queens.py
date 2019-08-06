@@ -8,64 +8,64 @@ def print_board(board):
         print(board[i])
 
 
-def safe(board, i, j):
-    v = sum([board[x][j] for x in range(BOARD_SIZE) if x != i])
-    if v != 0:
-        return False
-    h = sum([board[i][y] for y in range(BOARD_SIZE) if y != j])
-    if h != 0:
-        return False
+def safe_on_diagonals(board, i, j):
+    global safe_count
+    safe_count += 1
 
-    d = []
+    #check diagonals
     for a in range(1, BOARD_SIZE):
         if (i + a) < BOARD_SIZE and (j + a) < BOARD_SIZE:
-            d.append(board[i + a][j + a])
+            if board[i + a][j + a] != 0:
+                return False
         if (i - a) >= 0 and (j - a) >= 0:
-            d.append(board[i - a][j - a])
+            if board[i - a][j - a] != 0:
+                return False
         if (i + a) < BOARD_SIZE and (j - a) >= 0:
-            d.append(board[i + a][j - a])
+            if board[i + a][j - a] != 0:
+                return False
         if (i - a) >= 0 and (j + a) < BOARD_SIZE:
-            d.append(board[i - a][j + a])
-
-
-    d2 = []
-    signs = [(1, 1), (-1, -1), (1, -1), (-1, 1)]
-    for sign in signs:
-        w = [board[i + sign[0] * b][j + sign[1] * b]
-             for b in range(1, BOARD_SIZE)
-             if 0 <= i + sign[0] * b < BOARD_SIZE and 0 <= j + sign[1] * b < BOARD_SIZE]
-        d2.extend(w)
-
-    d = sum(d2)
-    if d != 0:
-        return False
+            if board[i - a][j + a] != 0:
+                return False
 
     return True
 
 
-def solve(board=None, queen_num=1, start_a=0):
+def solve(board=None, queen_num=1, start_cell=0, cols=None):
     if not board:
         board = get_clear_board()
-
+    if not cols:
+        cols = set()
     if queen_num == NUM_QUEENS + 1:
-        print("Finished")
         print_board(board)
         return True
-    for a in range(start_a, BOARD_SIZE ** 2):
-        i = a // BOARD_SIZE
-        j = a % BOARD_SIZE
 
-        if safe(board, i, j):
+    # don't inspect cells where the column has already been used
+    cells = [i + start_cell for i in range(BOARD_SIZE) if i not in cols]
+
+    for cell in cells:
+        i = cell // BOARD_SIZE
+        j = cell % BOARD_SIZE
+        if safe_on_diagonals(board, i, j):
             board[i][j] = queen_num
-            solved = solve(board=board, queen_num=(queen_num + 1), start_a=(a + 1))
+            cols.add(j)
+            start_cell = (i + 1) * BOARD_SIZE  # start at next row, it saves time
+            solved = solve(board=board, queen_num=(queen_num + 1), start_cell=start_cell, cols=cols)
             if not solved:
                 board[i][j] = 0
+                cols.remove(j)
             else:
                 return solved
 
     return False
 
 
-NUM_QUEENS = 8
-BOARD_SIZE = 8
-solve()
+if __name__ == "__main__":
+    for test in list(range(1, 20)):
+        print(f"{test} x {test}")
+        safe_count = 0
+        NUM_QUEENS = test
+        BOARD_SIZE = test
+        solution = solve()
+        if not solution:
+            print("No solution")
+        print(f"safe_on_diagonal calls: {safe_count}\n")
