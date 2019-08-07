@@ -125,13 +125,13 @@ find_multiple_rectangles(image3)
 # """
 # def find_recatangle(image):
 #     rows = len(image)
-#     cols = len(image[0])
+#     used_cols = len(image[0])
 
 #     first, last = None, None
 #     first_found = False
 
 #     for i in range(rows):
-#         for j in range(cols):
+#         for j in range(used_cols):
 #             if image[i][j] == 0:
 #                 if not first_found:
 #                     first = last = (i, j)
