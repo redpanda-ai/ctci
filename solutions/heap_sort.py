@@ -1,19 +1,19 @@
-def heapify(arr, n, i):
-    largest = i
-    left = 2 * i + 1
-    right = 2 * i + 2
+def heapify(arr, e, l):
+    # find largest among root and children
+    left = 2 * l + 1
+    right = 2 * l + 2
 
-    #print(arr[:n], arr[n:], i, n)
-    if left < n and arr[i] < arr[left]:
+    largest = l
+    if left < e and arr[largest] < arr[left]:
         largest = left
 
-    if right < n and arr[largest] < arr[right]:
+    if right < e and arr[largest] < arr[right]:
         largest = right
 
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]
+    if largest != l:
+        arr[l], arr[largest] = arr[largest], arr[l]
 
-        heapify(arr, n, largest)
+        heapify(arr, l, largest)
 
 
 def heap_sort(arr):
@@ -23,7 +23,6 @@ def heap_sort(arr):
     for i in range(n, -1, -1):
         heapify(arr, n, i)
 
-    #print(f"Heapified:\n{arr}")
 
     for j in range(n-1, 0, -1):
         # swap
