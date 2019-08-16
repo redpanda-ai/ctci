@@ -3,7 +3,7 @@ Major	Minor	Question	Title
 Write a method to merge B into A in sorted order"	"Sorted Merge
 "
 10	2	Write a method to sort an array of strings so that all the anagrams are next to each other.	Group Anagrams
-10	3	"Write a method to sort an array of *n* integers that has been rotated an unknown number of times, write code to find an element in the array.
+10	3	"Given a sorted array of *n* integers that has been rotated an unknown number of times, write code to find an element in the array.
 You may assume that the array was originally sorted in increasing order.
 EXAMPLE
 
