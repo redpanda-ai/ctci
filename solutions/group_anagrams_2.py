@@ -1,6 +1,5 @@
 from collections import defaultdict
 
-
 def group_anagrams(anas):
     groups = defaultdict(list)
     for word in anas:
