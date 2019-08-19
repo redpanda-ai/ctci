@@ -13,7 +13,7 @@ def heapify(arr, e, l):
     if largest != l:
         arr[l], arr[largest] = arr[largest], arr[l]
 
-        heapify(arr, l, largest)
+        heapify(arr, e, largest)
 
 
 def heap_sort(arr):
