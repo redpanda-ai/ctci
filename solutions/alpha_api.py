@@ -55,9 +55,8 @@ if __name__ == "__main__":
     parser.add_argument("-i", "--interval", default="daily", help="size of interval")
     parser.add_argument("-t", "--time_period", default=50, help="time_period")
 
-
     args = parser.parse_args()
-    print(args)
+    logging.warning(f"Command line arguments are: {args}")
     my_tickers = [ticker.strip() for ticker in args.tickers.split(",")]
     my_flush_redis = False
     if args.flush:
