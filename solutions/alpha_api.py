@@ -21,13 +21,13 @@ def get_sma_for_tickers(
         start_date="2019-01-01", end_date="2019-08-15"):
 
     ti = TechIndicators(output_format="pandas")
-    data, meta_data = {}, {}
-    keys = []
+    data, keys = {}, []
+
     for ticker in tickers:
         key = f"{ticker}:sma:{time_period}:{interval}"
         if redis_conn is None or flush_redis or not redis_conn.exists(key):
             # get from API
-            data[key], meta_data[ticker] = ti.get_sma(symbol=ticker, time_period=time_period, interval=interval)
+            data[key], _ = ti.get_sma(symbol=ticker, time_period=time_period, interval=interval)
             data[key] = data[key].loc[start_date:end_date]  # time to data from this date
             if redis_conn is None:
                 logging.warning("No redis connection, using API")
