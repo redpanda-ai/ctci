@@ -23,7 +23,7 @@ def heap_sort(arr):
     for i in range(n, -1, -1):
         heapify(arr, n, i)
 
-
+    print(arr)
     for j in range(n-1, 0, -1):
         # swap
         arr[j], arr[0] = arr[0], arr[j]
