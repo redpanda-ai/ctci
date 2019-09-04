@@ -12,7 +12,6 @@ def heapify(arr, e, l):
 
     if largest != l:
         arr[l], arr[largest] = arr[largest], arr[l]
-
         heapify(arr, e, largest)
 
 
