@@ -37,7 +37,7 @@ if __name__ == "__main__":
         -2    7  3     5
     """
     targets = [
-        4, 7, 10, 1
+        4, 7, 10, 1, 0, 5
     ]
     for target in targets:
         answer = paths_with_sum(a, target=target)
