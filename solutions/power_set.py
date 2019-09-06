@@ -6,7 +6,7 @@ def get_power_set(arr):
         j = i + 0
         k = 0
         while j > 0:
-            if j & 1 == 1:
+            if j & 1:
                 l.append(arr[k])
             j >>= 1
             k += 1
