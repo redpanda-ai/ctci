@@ -1,21 +1,21 @@
 def get_power_set(arr):
-    n = len(arr)
+    n = 2 ** len(arr)
     ps = []
-    for i in range(2 ** n):
-        l = []
-        j = i + 0
+
+    for i in range(n):
+        s = []
         k = 0
-        while j > 0:
-            if j & 1:
-                l.append(arr[k])
-            j >>= 1
+        while (i >> k) > 0:
+            if (i >> k) & 1:
+                s.append(arr[k])
             k += 1
-        ps.append(l)
+        ps.append(s)
 
     return ps
 
 
 if __name__ == "__main__":
-    a = ["a", "b", "c", "d", "e"]
-    for s in get_power_set(a):
-        print(s)
+    a = ["a", "b", "c", "d", "e", "f"]
+    ps = get_power_set(a)
+    for ind, s in enumerate(ps):
+        print(ind, s)

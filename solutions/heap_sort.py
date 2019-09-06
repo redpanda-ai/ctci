@@ -10,7 +10,7 @@ def heapify(arr, e, l):
     if right < e and arr[largest] < arr[right]:
         largest = right
 
-    if largest != l:
+    if largest is not l:
         arr[l], arr[largest] = arr[largest], arr[l]
         heapify(arr, e, largest)
 
