@@ -8,16 +8,14 @@ class Node:
         self.right = right
 
 
-def paths_with_sum(root, paths=[], target=0, target_count=None):
+def paths_with_sum(root, target=0, counter=Counter(), base=[]):
     if root:
-        if not target_count:
-            target_count = Counter()
-        my_paths = [root.data] + [root.data + val for val in paths]
-        target_count[target] += sum([1 for val in my_paths if val == target])
-        paths_with_sum(root.left, my_paths, target, target_count)
-        paths_with_sum(root.right, my_paths, target, target_count)
+        my_base = [root.data] + [root.data + val for val in base]
+        counter[target] += len([val for val in my_base if val == target])
+        paths_with_sum(root.left, target, counter, my_base)
+        paths_with_sum(root.right, target, counter, my_base)
 
-    return target_count[target]
+    return counter[target]
 
 
 if __name__ == "__main__":
@@ -30,11 +28,11 @@ if __name__ == "__main__":
     a.right.right = Node(5)
 
     """
-               4
-             *    * 
-           3        5
-          *  *    *   *
-        -2    7  3     5
+                 4
+               *   * 
+            3          5
+           *   *      *   *
+        -2      7   3       5
     """
     targets = [
         4, 7, 10, 1, 0, 5
