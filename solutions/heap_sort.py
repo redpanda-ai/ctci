@@ -22,7 +22,6 @@ def heap_sort(arr):
     for i in range(n, -1, -1):
         heapify(arr, n, i)
 
-    print(arr)
     for j in range(n-1, 0, -1):
         # swap
         arr[j], arr[0] = arr[0], arr[j]
@@ -32,7 +31,12 @@ def heap_sort(arr):
 
 
 if __name__ == "__main__":
-    test = [12, 11, 13, 5, 6, 7]
-    print(f"Heapsort for:\n{test}")
-    heap_sort(test)
-    print(test)
+    tests = [
+        [12, 11, 13, 5, 6, 7, -1, 9],
+        [],
+        [4, 3, 2, 1]
+    ]
+    for test in tests:
+        print(f"Heapsort for:\n{test}")
+        heap_sort(test)
+        print(test)
