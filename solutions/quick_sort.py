@@ -19,7 +19,13 @@ def quick_sort(arr, low, high):
 
 
 if __name__ == "__main__":
-    test = [10, 9, 7, 8, 8, 9, 1, 5]
-    n = len(test)
-    quick_sort(test, 0, n-1)
-    print(test)
+    tests =[
+        [10, 9, 7, 8, 8, 9, 1, 5],
+        [],
+        [1],
+        [2, 1]
+    ]
+    for test in tests:
+        n = len(test)
+        quick_sort(test, 0, n-1)
+        print(test)
