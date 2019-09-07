@@ -14,7 +14,7 @@ def merge_sort(arr):
                 arr[k] = l_arr[i]
                 i += 1
             else:
-                arr[k] = r_arr[i]
+                arr[k] = r_arr[j]
                 j += 1
             k += 1
 
@@ -31,9 +31,13 @@ def merge_sort(arr):
 
 if __name__ == "__main__":
     tests = [
-        [2, 1, 3, 5, 4, 7]
+        [2, 1, 3, 5, 4, 7],
+        [2],
+        [],
+        [1, 1, 2, 1, 1, 1],
+        [7, 6, 5, 4, 3, 2, 1]
     ]
     for test in tests:
-        print(f"Input: {test}")
+        print(f"\nInput: {test}")
         merge_sort(test)
         print(f"Output: {test}")
