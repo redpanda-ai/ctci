@@ -12,6 +12,32 @@ class Node:
         return "[" + ", ".join(result) + "]"
 
 
+def intersection_new(list_a, list_b):
+    runner_a, runner_b = list_a, list_b
+
+    while runner_a and runner_b:
+        runner_a = runner_a.next
+        runner_b = runner_b.next
+
+    while runner_a:
+        runner_a = runner_a.next
+        list_a = list_a.next
+
+    while runner_b:
+        runner_b = runner_b.next
+        list_b = list_b.next
+
+    while list_a and list_b:
+        if list_a == list_b:
+            print(f"Your lists intersect at {list_a.data}")
+            return list_a
+        list_a = list_a.next
+        list_b = list_b.next
+
+    print(f"Your lists do not intersect")
+    return None
+
+
 def intersection(list_1, list_2):
     print(f"\nList 1: {list_1}")
     print(f"List 2: {list_2}")
@@ -71,8 +97,10 @@ if __name__ == "__main__":
     v.next = w
     w.next = x
 
-    intersection(a, r)
-    intersection(a, a)
-    intersection(r, a)
-    intersection(a, c)
-    intersection(a, v)
+    funs = [intersection, intersection_new]
+    for fun in funs:
+        fun(a, r)
+        fun(a, a)
+        fun(r, a)
+        fun(a, c)
+        fun(a, v)

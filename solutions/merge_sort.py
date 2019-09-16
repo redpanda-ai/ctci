@@ -1,3 +1,4 @@
+
 def merge_sort(arr):
     if len(arr) > 1:
         mid = len(arr) // 2
@@ -27,6 +28,7 @@ def merge_sort(arr):
             arr[k] = r_arr[j]
             j += 1
             k += 1
+
 
 
 if __name__ == "__main__":

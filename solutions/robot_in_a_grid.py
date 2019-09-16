@@ -1,47 +1,100 @@
 from collections import deque
+from collections import namedtuple
 
-maze = [
-    [0, 0, 0, 0],
-    [0, 1, 1, 1],
-    [0, 0, 0, 0],
-    [0, 1, 1, 0]
-]
+FORBIDDEN = 1
 
-maze = [
-    [0, 0, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 0],
-    [0, 1, 1, 0]
-]
 
-maze = [
-    [0, 1, 0, 0],
-    [0, 0, 0, 1],
-    [0, 1, 0, 1],
-    [0, 1, 0, 0]
-]
+def rig(grid):
+    lim_y = len(grid)
+    lim_x = len(grid[0])
 
-x_max = len(maze[0]) - 1
-y_max = len(maze) - 1
+    State = namedtuple('State', 'x y path')
+    start_state = State(0, 0, [])
+    goal_state = State(lim_x - 1, lim_y - 1, None)
+    open_states = deque([start_state])
+    while open_states:
+        s = open_states.popleft()
+        _x, _y = s.x + 1, s.y + 1
+        if s.x == goal_state.x and s.y == goal_state.y:
+            return s.path
+        if _x < lim_x and grid[s.y][_x] is not FORBIDDEN:
+            open_states.append(State(_x, s.y, s.path + ["R"]))
+        if _y < lim_y and grid[_y][s.x] is not FORBIDDEN:
+            open_states.append(State(s.x, _y, s.path + ["D"]))
 
-x, y = 0, 0
-goal = (x_max, y_max)
-start = (0, 0, [])
-print(x_max, y_max, goal, start)
+    return None
 
-open_states = deque([start])
 
-while open_states:
-    x, y, my_path = open_states.popleft()
-    if x + 1 <= x_max and maze[x + 1][y] == 0:
-        right_path = my_path + [(x, y)]
-        open_states.append((x + 1, y, right_path))
-    if y + 1 <= y_max and maze[x][y + 1] == 0:
-        down_path = my_path + [(x, y)]
-        open_states.append((x, y + 1, down_path))
-    print(x, y, my_path)
-    if x == x_max and y == y_max:
-        print(my_path + [(x, y)])
-        print("Found a path")
+class State:
+    def __init__(self, x, y, path):
+        self.x = x
+        self.y = y
+        self.path = path
+
+    def is_forbidden(self, grid):
+        return grid[self.y][self.x] is FORBIDDEN
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+
+def new_rig(grid):
+    lim_x, lim_y = len(grid[0]), len(grid)
+    start_state = State(0, 0, [])
+    goal_state = State(lim_x - 1, lim_y - 1, None)
+    open_states = deque([start_state])
+
+    while open_states:
+        s = open_states.popleft()
+
+        if s == goal_state:
+            return s.path
+
+        down = State(s.x, s.y + 1, s.path + ["D"])
+        if down.y < lim_y and not down.is_forbidden(grid):
+            open_states.append(down)
+
+        right = State(s.x + 1, s.y, s.path + ["R"])
+        if right.x < lim_x and not right.is_forbidden(grid):
+            open_states.append(right)
+
+
+def show_grid(grid):
+    for line in grid:
+        print(line)
+
+
+if __name__ == "__main__":
+    grids = [
+        [
+            [0, 0, 0, 0],
+            [0, 1, 1, 1],
+            [0, 0, 0, 0],
+            [0, 1, 1, 0]
+        ],
+        [
+            [0, 0, 0, 0],
+            [0, 1, 1, 0],
+            [0, 0, 1, 0],
+            [0, 1, 1, 0]
+        ],
+        [
+            [0, 1, 0, 0],
+            [0, 0, 0, 1],
+            [0, 1, 0, 1],
+            [0, 1, 0, 0]
+        ],
+        [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 1, 1],
+            [0, 0, 1, 0]
+        ]
+    ]
+    for grid in grids:
+        show_grid(grid)
+        path_to_goal = new_rig(grid)
+        print(f"Path to goal: {path_to_goal}")
+
 
 

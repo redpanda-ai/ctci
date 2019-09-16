@@ -12,42 +12,32 @@ class Node:
 
         return result
 
-a = Node(data='a')
-a.next = Node(data='b')
-a.next.next = Node(data='c')
-a.next.next.next = Node(data='d')
-a.next.next.next.next = Node(data='e')
+
+def delete_middle_node(root: Node, target: Node):
+    runner = root
+    trailer = None
+    while runner.next:
+        trailer = runner
+        runner = runner.next
+        if runner == target:
+            trailer.next = runner.next
 
 
-print(a)
+if __name__ == "__main__":
+    root = Node(data='a')
+    b = Node(data="b")
+    c = Node(data="c")
+    d = Node(data="d")
+    e = Node(data="e")
 
-class Solution:
-    def solver(self, listy, target):
-        print(f"Removing '{target}' from middle of {listy}")
-        r = s = listy
-        first = True
-        while r:
-            if first:
-                r = r.next
-                first = False
-            elif r.next:
-                if r.data == target:
-                    s.next = r.next
-                    return
-                else:
-                    r = r.next
-                    s = s.next
-            else:
-                return
+    root.next = b
+    b.next = c
+    c.next = d
+    d.next = e
 
-
-s = Solution()
-print(a)
-s.solver(a, 'c')
-print(a)
-s.solver(a, 'a')
-print(a)
-s.solver(a, 'e')
-print(a)
-s.solver(a, 'b')
-print(a)
+    print(root)
+    targets = [b, c, d]
+    for target in targets:
+        print(f"Deleting {target.data} from middle of : {root}")
+        delete_middle_node(root, target)
+        print(f"{root}")

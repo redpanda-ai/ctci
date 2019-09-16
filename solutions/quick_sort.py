@@ -3,7 +3,7 @@ def partition(arr, low, high):
     pivot = arr[high]
 
     for j in range(low, high):
-        if arr[j] <= pivot:
+        if arr[j] < pivot:
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
 
@@ -23,9 +23,11 @@ if __name__ == "__main__":
         [10, 9, 7, 8, 8, 9, 1, 5],
         [],
         [1],
-        [2, 1]
+        [2, 1],
+        [1, 2, 3, 4, 5, 7, 7, 7, 6, 7, 8, 9]
     ]
     for test in tests:
         n = len(test)
+        print(test)
         quick_sort(test, 0, n-1)
         print(test)

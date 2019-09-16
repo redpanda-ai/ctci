@@ -4,7 +4,7 @@ def parens(input, base=""):
 
     if open_p < input:
         parens(input, base=base+"(")
-    if closed_p < open_p and closed_p < input:
+    if closed_p < open_p:
         parens(input, base=base+")")
     if open_p == closed_p == input:
         print(base)

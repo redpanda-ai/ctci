@@ -46,6 +46,56 @@ def sparse_search(arr, target):
     return - 1
 
 
+def sparse_search_2(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        while arr[low] == "" and low <= high:
+            low += 1
+        if arr[low] == target:
+            return low
+
+        while arr[high] == "" and high >= low:
+            high -= 1
+        if arr[high] == target:
+            return high
+
+        m = (low + high) // 2
+
+        while arr[m] == "" and m >= low:
+            m -= 1
+        if arr[m] == target:
+            return m
+
+        if arr[m] > target:
+            high = m - 1
+        else:
+            low = m + 1
+
+    return -1
+
+
+def sparse_search_3(arr, key):
+    left, right = 0, len(arr) - 1
+    while arr[left] is "":
+        left += 1
+    while arr[right] is "":
+        right -= 1
+
+    while left <= right:
+        m = (left + right) // 2
+        while m > left and arr[m] is "":
+            m -= 1
+
+        if arr[m] == key:
+            return m
+        if arr[m] > key:
+            right = m - 1
+        else:
+            left = m + 1
+
+    return -1
+
+
 tests = [
     "at",
     "ball",
@@ -55,3 +105,5 @@ tests = [
 
 for test in tests:
     print(f"{test}: {sparse_search(sparse_arr, test)}")
+    print(f"{test}: {sparse_search_2(sparse_arr, test)}")
+    print(f"{test}: {sparse_search_3(sparse_arr, test)}")

@@ -4,7 +4,8 @@ from collections import Counter
 def triple_step(steps):
     ways = [1, 1, 2]
     for i in range(3, steps + 1):
-        ways.append(ways[i - 1] + ways[i - 2] + ways[i - 3])
+        # ways.append(ways[i - 1] + ways[i - 2] + ways[i - 3])
+        ways.append(sum(ways[i-3:i]))
 
     return ways[steps]
 
