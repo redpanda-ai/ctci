@@ -12,25 +12,25 @@ def weave_lists(first: list, second: list, results: list, prefix: list) -> None:
         return
 
     # recursive case
-    first_head, first_tail = first[0], first[1:]
-    weave_lists(first_tail, second, results, prefix + [first_head])
+    first_head, first_tail = first[0:1], first[1:]
+    weave_lists(first_tail, second, results, prefix + first_head)
 
-    second_head, second_tail = second[0], second[1:]
-    weave_lists(first, second_tail, results, prefix + [second_head])
+    second_head, second_tail = second[0:1], second[1:]
+    weave_lists(first, second_tail, results, prefix + second_head)
 
 
 def all_sequences(root: Node) -> list:
     """Splits the tree into three lists: prefix, left, and right."""
     if root is None:
-        return []
+        return [[]]
 
     answer = []
     prefix = [root.value]
-    left = all_sequences(root.left) or [[]]
-    right = all_sequences(root.right) or [[]]
+    left = all_sequences(root.left)
+    right = all_sequences(root.right)
 
-    # At a minimum, left and right must be a list containing an empty list
-    # for the following nested loop
+    # At a minimum, left and right must be [[]], a list containing
+    # an empty list for the following nested loop
     for i in range(len(left)):
         for j in range(len(right)):
             weaved = []

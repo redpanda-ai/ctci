@@ -15,9 +15,6 @@ class Node:
 
 
 def leftmost_child(node: Node):
-    if node is None:
-        return
-
     while node.left:
         node = node.left
 
