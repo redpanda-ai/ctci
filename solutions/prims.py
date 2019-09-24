@@ -36,12 +36,12 @@ def prim(my_edges: list):
         heapq.heappush(edge_dict[v1], e)
         heapq.heappush(edge_dict[v2], e)
 
-    non_tree_verts = set(edge_dict.keys())
-    tree_verts = set(non_tree_verts.pop())
+    non_tree_nodes = set(edge_dict.keys())
+    tree_nodes = set(non_tree_nodes.pop())
     tree_edges = list()
 
-    while non_tree_verts:
-        best_edge = get_best_edge(tree_verts, non_tree_verts, edge_dict)
+    while non_tree_nodes:
+        best_edge = get_best_edge(tree_nodes, non_tree_nodes, edge_dict)
         tree_edges.append(best_edge)
 
     return tree_edges
@@ -55,10 +55,12 @@ if __name__ == "__main__":
         (3, "b", "c"),
         (1, "b", "d"),
         (3, "c", "e"),
-        (4, "d", "e")
+        (4, "d", "e"),
+        (3, "e", "f"),
+        (2, "c", "f")
     ]
 
     mst = prim(edges)
     print(f"Minimal spanning tree of {edges}")
-    for edge in mst:
-        print(edge)
+    for my_edge in mst:
+        print(my_edge)
