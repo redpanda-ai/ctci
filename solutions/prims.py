@@ -57,10 +57,17 @@ if __name__ == "__main__":
         (3, "c", "e"),
         (4, "d", "e"),
         (3, "e", "f"),
-        (2, "c", "f")
+        (2, "c", "f"),
+        (3, "c", "g"),
+        (4, "d", "g"),
+        (2, "b", "g")
     ]
 
     mst = prim(edges)
     print(f"Minimal spanning tree of {edges}")
+    total_cost = 0
     for my_edge in mst:
+        cost, _, _ = my_edge
+        total_cost += cost
         print(my_edge)
+    print(f"Total cost: {total_cost}")
