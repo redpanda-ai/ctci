@@ -12,7 +12,7 @@ class Node:
         return "[" + ", ".join(result) + "]"
 
 
-def intersection_new(list_a, list_b):
+def intersection(list_a, list_b):
     runner_a, runner_b = list_a, list_b
 
     while runner_a and runner_b:
@@ -29,41 +29,12 @@ def intersection_new(list_a, list_b):
 
     while list_a and list_b:
         if list_a == list_b:
-            print(f"Your lists intersect at {list_a.data}")
+            # print(f"Your lists intersect at {list_a.data}")
             return list_a
         list_a = list_a.next
         list_b = list_b.next
 
-    print(f"Your lists do not intersect")
-    return None
-
-
-def intersection(list_1, list_2):
-    print(f"\nList 1: {list_1}")
-    print(f"List 2: {list_2}")
-
-    r1, r2 = list_1, list_2
-
-    while r1 and r2:
-        r1 = r1.next
-        r2 = r2.next
-
-    longer, shorter, runner = list_1, list_2, r1
-    if r2:
-        longer, shorter, runner = list_2, list_1, r2
-
-    while runner:
-        longer = longer.next
-        runner = runner.next
-
-    while longer and shorter:
-        if longer == shorter:
-            print(f"Lists intersect at {longer.data}")
-            return longer
-        longer = longer.next
-        shorter = shorter.next
-
-    print(f"Lists do not intersect")
+    # print(f"Your lists do not intersect")
     return None
 
 
@@ -97,10 +68,17 @@ if __name__ == "__main__":
     v.next = w
     w.next = x
 
-    funs = [intersection, intersection_new]
-    for fun in funs:
-        fun(a, r)
-        fun(a, a)
-        fun(r, a)
-        fun(a, c)
-        fun(a, v)
+    list_tests = [
+        (a, r, d),
+        (a, a, a),
+        (r, a, d),
+        (a, c, c),
+        (a, v, None)
+    ]
+
+    for list_1, list_2, expectation in list_tests:
+        print(f"\nlist_1: {list_1}\nlist_2: {list_2}\nexpectation: {expectation}")
+        if expectation is intersection(list_1, list_2):
+            print("pass")
+        else:
+            print("fail")
