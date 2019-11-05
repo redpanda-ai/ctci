@@ -4,11 +4,9 @@ def heapify(arr, e, l):
     right = 2 * l + 2
 
     largest = l
-    if left < e and arr[largest] < arr[left]:
-        largest = left
-
-    if right < e and arr[largest] < arr[right]:
-        largest = right
+    for c in [left, right]:
+        if c < e and arr[largest] < arr[c]:
+            largest = c
 
     if largest is not l:
         arr[l], arr[largest] = arr[largest], arr[l]

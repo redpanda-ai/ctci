@@ -4,97 +4,52 @@ from collections import namedtuple
 FORBIDDEN = 1
 
 
-def rig(grid):
-    lim_y = len(grid)
-    lim_x = len(grid[0])
+def robot_in_a_grid(lim_x: int, lim_y: int, forbidden: set) -> deque:
+    start = State(x=0, y=0, parent=None)
+    goal = State(x=lim_x - 1, y=lim_y - 1, parent=None)
 
-    State = namedtuple('State', 'x y path')
-    start_state = State(0, 0, [])
-    goal_state = State(lim_x - 1, lim_y - 1, None)
-    open_states = deque([start_state])
+    open_states = deque([start])
+
+    answer = deque()
     while open_states:
         s = open_states.popleft()
-        _x, _y = s.x + 1, s.y + 1
-        if s.x == goal_state.x and s.y == goal_state.y:
-            return s.path
-        if _x < lim_x and grid[s.y][_x] is not FORBIDDEN:
-            open_states.append(State(_x, s.y, s.path + ["R"]))
-        if _y < lim_y and grid[_y][s.x] is not FORBIDDEN:
-            open_states.append(State(s.x, _y, s.path + ["D"]))
+        if s.x is goal.x and s.y is goal.y:
+            while s:
+                answer.appendleft((s.x, s.y))
+                s = s.parent
+            return answer
 
-    return None
+        d = State(x=s.x, y=s.y + 1, parent=s)
+        r = State(x=s.x + 1, y=s.y, parent=s)
+
+        for c in [d, r]:
+            if c.x < lim_x and c.y < lim_y and (c.x, c.y) not in forbidden and c not in open_states:
+                open_states.append(c)
+
+    return answer
 
 
 class State:
-    def __init__(self, x, y, path):
+    def __init__(self, x=None, y=None, parent=None):
         self.x = x
         self.y = y
-        self.path = path
+        self.parent = parent
 
-    def is_forbidden(self, grid):
-        return grid[self.y][self.x] is FORBIDDEN
+    def __repr__(self):
+        return f"({self.x}, {self.y})"
 
     def __eq__(self, other):
-        return self.x == other.x and self.y == other.y
-
-
-def new_rig(grid):
-    lim_x, lim_y = len(grid[0]), len(grid)
-    start_state = State(0, 0, [])
-    goal_state = State(lim_x - 1, lim_y - 1, None)
-    open_states = deque([start_state])
-
-    while open_states:
-        s = open_states.popleft()
-
-        if s == goal_state:
-            return s.path
-
-        down = State(s.x, s.y + 1, s.path + ["D"])
-        if down.y < lim_y and not down.is_forbidden(grid):
-            open_states.append(down)
-
-        right = State(s.x + 1, s.y, s.path + ["R"])
-        if right.x < lim_x and not right.is_forbidden(grid):
-            open_states.append(right)
-
-
-def show_grid(grid):
-    for line in grid:
-        print(line)
+        return self.x is other.x and self.y is other.y
 
 
 if __name__ == "__main__":
-    grids = [
-        [
-            [0, 0, 0, 0],
-            [0, 1, 1, 1],
-            [0, 0, 0, 0],
-            [0, 1, 1, 0]
-        ],
-        [
-            [0, 0, 0, 0],
-            [0, 1, 1, 0],
-            [0, 0, 1, 0],
-            [0, 1, 1, 0]
-        ],
-        [
-            [0, 1, 0, 0],
-            [0, 0, 0, 1],
-            [0, 1, 0, 1],
-            [0, 1, 0, 0]
-        ],
-        [
-            [0, 0, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 1, 1],
-            [0, 0, 1, 0]
-        ]
-    ]
-    for grid in grids:
-        show_grid(grid)
-        path_to_goal = new_rig(grid)
-        print(f"Path to goal: {path_to_goal}")
-
-
+    test_forbidden = {
+        (1, 1),
+        (1, 2),
+        (1, 3),
+        (3, 1),
+        (3, 2)
+    }
+    path_to_goal = robot_in_a_grid(5, 5, test_forbidden)
+    print(f"Path to goal: {path_to_goal}")
 

@@ -1,9 +1,9 @@
 def get_power_set(arr):
     n = 2 ** len(arr)
-    ps = []
+    ps = list()
 
     for i in range(n):
-        s = []
+        s = list()
         k = 0
         while (i >> k) > 0:
             if (i >> k) & 1:

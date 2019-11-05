@@ -24,7 +24,7 @@ def all_sequences(root: Node) -> list:
     if root is None:
         return [[]]
 
-    answer = []
+    answer = list()
     prefix = [root.value]
     left = all_sequences(root.left)
     right = all_sequences(root.right)
@@ -33,7 +33,7 @@ def all_sequences(root: Node) -> list:
     # an empty list for the following nested loop
     for i in range(len(left)):
         for j in range(len(right)):
-            weaved = []
+            weaved = list()
             weave_lists(left[i], right[j], weaved, prefix)
         answer.extend(weaved)
 
