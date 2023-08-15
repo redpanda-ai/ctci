@@ -9,13 +9,13 @@ Use the included ```environment.yml``` file to create a conda virtual environmen
 # Installation instructions
 
 1. Install [conda](https://www.anaconda.com/download#downloads) for the operating system you will use.
-1. Clone this repository
+2. Clone this repository
   * `git clone https://github.com/redpanda-ai/ctci.git`
-1. Change directories into the newly cloned repository
+3. Change directories into the newly cloned repository
   * `cd ctci`
-1. Create a conda environment from the included environment.yml file
+4. Create a conda environment from the included environment.yml file
   * `conda env create -f environment.yml`
-1. Activate the environment
+5. Activate the environment
   * `conda activate ctci`
-1. Confirm that it works with the following command
+6. Confirm that it works with the following command
   * `python problem_picker.py 5`
