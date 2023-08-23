@@ -42,8 +42,8 @@ def get_time_in_seconds(time_minutes: int) -> int:
 def copy_to_clipboard(title: str, question: str):
     """Copy the question as a doc-string into the system clipboard"""
     cprint(
-        "Your question has been copied to your internal clipboard, you can now paste it into an editor",
-        "yellow",
+        "Your question has been copied to your internal clipboard, you can now paste it into an editor.",
+        "magenta",
     )
     pyperclip.copy(f'"""\nTitle:\n\t{title}\nQuestion:\n\t{question}\n"""\n\n')
 
