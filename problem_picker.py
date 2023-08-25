@@ -16,6 +16,7 @@ def main():
     """
     args = parse_arguments()
 
+
     # Collect questions from data directory
     df = get_all_questions("./data")
 
@@ -25,6 +26,11 @@ def main():
     system_bell()
 
     new_df = display_random_question(df)
+
+    # Abort early if the time_for_problem is zero.
+    if args.time_for_problem == 0:
+        return
+
     display_timer(time_seconds)
 
     chapter = list(new_df["Major"])[0]
