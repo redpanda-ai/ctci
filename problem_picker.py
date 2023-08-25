@@ -9,7 +9,7 @@ from termcolor import cprint
 from tqdm import tqdm
 
 
-def main():
+def main() -> None:
     """
     This script picks a random question and presents it to the user to
     solve in a limited amount of time
