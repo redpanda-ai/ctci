@@ -16,7 +16,6 @@ def main():
     """
     args = parse_arguments()
 
-
     # Collect questions from data directory
     df = get_all_questions("./data")
 
@@ -31,8 +30,10 @@ def main():
     if args.time_for_problem == 0:
         return
 
+    # Start the clock
     display_timer(time_seconds)
 
+    # Print the question
     chapter = list(new_df["Major"])[0]
     question = list(new_df["Minor"])[0]
     print(f"\nThe program selected Chapter {chapter} Question {question}")
@@ -48,7 +49,8 @@ def get_time_in_seconds(time_minutes: int) -> int:
 def copy_to_clipboard(title: str, question: str):
     """Copy the question as a doc-string into the system clipboard"""
     cprint(
-        "Your question has been copied to your internal clipboard, you can now paste it into an editor.",
+        "Your question has been copied to your internal clipboard, "
+        "you can now paste it into an editor.",
         "magenta",
     )
     pyperclip.copy(f'"""\nTitle:\n\t{title}\nQuestion:\n\t{question}\n"""\n\n')
@@ -93,7 +95,7 @@ def display_timer(total_time_seconds: int):
         print(f"You finished with {total_time_seconds - counter} seconds remaining.")
 
 
-def get_all_questions(directory_path: str):
+def get_all_questions(directory_path: str) -> pd.DataFrame:
     """Grabs all questions from a directory path and creates a big data frame"""
     dfs = []
     for filename in os.listdir(directory_path):
@@ -107,7 +109,7 @@ def get_all_questions(directory_path: str):
     return df
 
 
-def get_questions_df(file_name: str):
+def get_questions_df(file_name: str) -> pd.DataFrame:
     """Grabs all questions in a single TSV file"""
     df = pd.read_csv(file_name, sep="\t")
     return df
