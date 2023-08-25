@@ -46,7 +46,7 @@ def get_time_in_seconds(time_minutes: int) -> int:
     return time_minutes * 60
 
 
-def copy_to_clipboard(title: str, question: str):
+def copy_to_clipboard(title: str, question: str) -> None:
     """Copy the question as a doc-string into the system clipboard"""
     cprint(
         "Your question has been copied to your internal clipboard, "
@@ -70,7 +70,7 @@ def display_random_question(df: pd.DataFrame) -> pd.DataFrame:
     return new_df
 
 
-def display_timer(total_time_seconds: int):
+def display_timer(total_time_seconds: int) -> None:
     """Display a timer, that can be interrupted with CTRL + C"""
     cprint("You can press CTRL + C at any time to stop the timer", "blue")
     cprint("Elapsed Time", "red")
@@ -115,7 +115,7 @@ def get_questions_df(file_name: str) -> pd.DataFrame:
     return df
 
 
-def parse_arguments():
+def parse_arguments() -> argparse.Namespace:
     """Parses all command line arguments"""
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -124,7 +124,7 @@ def parse_arguments():
     return parser.parse_args()
 
 
-def system_bell():
+def system_bell() -> None:
     """Make an audible tone"""
     sys.stdout.write("\007")
     sys.stdout.flush()
