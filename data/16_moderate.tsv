@@ -80,7 +80,7 @@ EXAMPLE
 
 Write a program to simulate the first `K` moves that the ant makes and print the final board as a grid. Note that you are not provided with the data structure to represent the grid. This is something you must design yourself. The only input to your method is `K`. You should print the final grid and return nothing. The method signature might be something like `void printKMoves(int K)`."	"Langton's Ant"
 16	23	"Implement a method `rand7()` given `rand5()`. That is, given a method that generates a random integer between 0 and 4 (inclusive), write a method that generates a random integer between 0 and 6 (inclusive)."	"Rand7 from Rand5"
-16	24	Design an algorithm to find all pairs of integers within an array which sum to a specified value."	"Pairs with Sum"
+16	24	"Design an algorithm to find all pairs of integers within an array which sum to a specified value."	"Pairs with Sum"
 16	25	"Design and build a least recently used' cache, which evicts the least recently used item. The cache should map from keys to values (allowing you to insert and retrieve a value associated with a particular key) and be initialized with a max size. When it is full, it should evict the least recently used item."	"LRU Cache"
 16	26	"Given an arithmetic equation consisting of positive integers, +, -, * and / (no parentheses), compute the result.
 EXAMPLE
