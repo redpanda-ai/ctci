@@ -1,0 +1,8 @@
+Major	Minor	Question	Title
+14	1	"Write a SQL query to get a list of tenants who are renting more than one apartment."	"Multiple Apartments"
+14	2	"Write a SQL query to get a list of all buildings and the number of open requests (Requests in which status equals 'Open')"	"Open Requests"
+14	3	"Building #11 is undergoing a major renovation. Implement a query to close all requests from apartments in this building."	"Close All Requests"
+14	4	"What are the different types of joins? Please explain how they differ and why certain types are better in certain situations."	"Joins"
+14	5	"What is denormalization? Explain the pros and cons."	"Denormalization"
+14	6	"Draw an entity-relationship diagram for a database with companies, people, and professionals (people who work for companies)."	"Entity-Relationship Diagram"
+14	7	"Imagine a simple database storing information for students' grades. Design what this database might look like and provide a SQL query to return a list of the honor roll students (top 10%), sorted by their grade point average."	"Design Grade Database"
