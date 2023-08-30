@@ -27,11 +27,9 @@ def main() -> None:
     new_df = display_random_question(df)
 
     # Abort early if the time_for_problem is zero.
-    if args.time_for_problem == 0:
-        return
-
-    # Start the clock
-    display_timer(time_seconds)
+    if not args.time_for_problem == 0:
+        # Start the clock
+        display_timer(time_seconds)
 
     # Print the question
     chapter = list(new_df["Major"])[0]
