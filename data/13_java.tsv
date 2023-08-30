@@ -1,9 +1,8 @@
 Major	Minor	Question	Title
-13	3	"What is the difference between ""final"", ""finally"", and ""finalize""?	"Final, etc."
+13	1	"In terms of inheritance, what is the effect of keeping a constructor private?"	"Private Constructor"
+13	2	"In Java, does the ""finally"" block get executed if we insert a ""return"" statement inside the ""try"" block of a ""try-catch-finally""?"	"Return from Finally"
 13	4	"Explain the difference between templates in C++ and generics in Java."	"Generics vs. Templates"
 13	5	"Explain the differences between ""TreeMap"", ""HashMap"", and ""LinkedHashMap"". Provide an example of when each one would be best."	"TreeMap, HashMap, LinkedHashMap"
 13	6	"Explain what object reflection is in Java and why it is useful."	"Object Reflection"
 13	7	"There is a class ""Country"" that has methods ""getContinent()"" and ""getPopulation"". Write a function ""int getPopulation(List<Country> countries, String continent) that computes the total population of a given continent, given a list of all countries and the name of the continent."	"Lambda Expressions"
 13	8	"Using ""Lambda"" expressions, write a function ""List<Integer> getRandomSubset(List<Integer> list) that returns a random subset of arbitrary size. All subsets (including the empty set) should be equally likely to be chosen."	"Lambda Random"
-13	2	"In Java, does the 'finally' block get executed if we insert a 'return' statement inside the 'try' block of a 'try-catch-finally'?"	"Return from Finally"
-13	1	"In terms of inheritance, what is the effect of keeping a constructor private?"	"Private Constructor"
