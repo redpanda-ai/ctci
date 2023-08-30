@@ -2,4 +2,4 @@ Major	Minor	Question	Title
 11	1	"Find the mistake in the following code:
   unsigned int i;
   for (i = 100; i >= 0; --i)
-    printf(\"%d\n\", i);"	Mistake
+    printf(""%d\n"", i);"	"Mistake"
