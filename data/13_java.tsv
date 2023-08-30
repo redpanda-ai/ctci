@@ -1,0 +1,3 @@
+Major	Minor	Question	Title
+13	1	"In terms of inheritance, what is the effect of keeping a constructor private?"	"Private Constructor"
+13	2	"In Java, does the ""finally"" block get executed if we insert a ""return"" statement inside the ""try"" block of a ""try-catch-finally""?"	"Return from Finally"
