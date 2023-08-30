@@ -1,6 +1,6 @@
 Major	Minor	Question	Title
 13	1	"In terms of inheritance, what is the effect of keeping a constructor private?"	"Private Constructor"
-13	2	"In Java, does the ""finally"" block get executed if we insert a ""return"" statement inside the ""try"" block of a ""try-catch-finally""?"	"Return from Finally"
+13	2	"In Java, does the 'finally' block get executed if we insert a 'return' statement inside the 'try' block of a 'try-catch-finally'?"	"Return from Finally"
 13	3	"What is the difference between ""final"", ""finally"", and ""finalize""?	"Final, etc."
 13	4	"Explain the difference between templates in C++ and generics in Java."	"Generics vs. Templates"
 13	5	"Explain the differences between ""TreeMap"", ""HashMap"", and ""LinkedHashMap"". Provide an example of when each one would be best."	"TreeMap, HashMap, LinkedHashMap"
