@@ -8,12 +8,4 @@ Major	Minor	Question	Title
 12	7	"Why does a destructor in base class need to be declared virtual?"	"Virtual Base Class"
 12	8	"Write a method that takes a pointer to a ""Node"" structure as a parameter and returns a complete copy of the passed in data structure. The ""Node"" data structure contains two pointers to other ""Nodes""."	"Copy Node"
 12	9	"Write a smart pointer class. A smart pointer is a data type, usually implemented with templates, that simulates a pointer while also providing automatic garbage collection. It automatically counts the number of references to a ""SmartPointer<T*>"" object and fress the object of type ""T"" when the reference count hits zero."	"Smart Pointer"
-12	10	"Write an aligned 'malloc' and 'free' function that supports allocating memory such that the memory addressed returned is divisible by a specific power of two.
-
-EXAMPLE:
-
-  'aligned_malloc(1000, 128)' will return a memory address that is a multiple of 128 and that points to a memory of size 1000 bytes.
-  'aligned_free()' will free memory allocated by 'aligned_malloc'.
-
-"	"Malloc"
 12	11	"Write a function in C called ""my2DAlloc"" which allocates a two-dimensional array. Minimize the number of calls to ""malloc"" and make sure that the memory is accessible by the notation ""arr[i][j]"".
