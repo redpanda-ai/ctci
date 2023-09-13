@@ -8,39 +8,29 @@ Use the included ```environment.yml``` file to create a conda virtual environmen
 
 ## Installation instructions
 
-### Conda
+1. Ensure you have `pipenv` installed. A comprehensive guide for installing Pipenv can be found [here](https://pipenv.pypa.io/en/latest/installation/).
 
-* Install [conda](https://www.anaconda.com/download#downloads) for the operating system you will use.
-* Clone this repository
-  * `git clone https://github.com/redpanda-ai/ctci.git`
-* Change directories into the newly cloned repository
-  * `cd ctci`
-* Create a conda environment from the included environment.yml file
-  * `conda env create -f environment.yml`
-* Activate the environment
-  * `conda activate ctci`
-* Confirm that everything works by issuing the the following command
-  * `python problem_picker.py 5`
-
-### Pipenv
-
-Ensure you have `pipenv` installed :)
-
+2. Open a terminal and enter the following commands in order.
+   
+3. Enter this command to install all packages from Pipfile
 ```sh
-# Install all packages from Pipfile
 pipenv install
+```
 
-# Spawn a shell within the virtualenv
+4. Enter this command to spawn a shell within the virtualenv
+```sh
 pipenv shell
+```
 
-# And you're off to the races!
+5. Enter this command to confirm that your installation succeeded, by issuing the following command
+```sh
 python problem_picker.py
+```
+If everything worked you should get a **usage** error similar to this
+```sh
 usage: problem_picker.py [-h] time_for_problem
 problem_picker.py: error: the following arguments are required: time_for_problem
 ```
 
-Alternatively, to run it:
-
-```sh
-pipenv run problem_picker.py
-```
+## Still not working? Maybe we can help
+If something failed along the way, please confirm that you followed all instructions precisely. Also, feel free to file a bug with all of the relevant details, including which operating system, shell, and outputs you received from each command. Thanks!
