@@ -16,8 +16,8 @@ def main() -> None:
     """
     args = parse_arguments()
 
-    # Collect questions from data directory
-    df = get_all_questions("./data")
+    # Collect questions from questions directory
+    df = get_all_questions("./questions")
 
     # Prompt user to start
     time_seconds = get_time_in_seconds(args.time_for_problem)
