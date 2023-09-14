@@ -16,8 +16,8 @@ def main() -> None:
     """
     args = parse_arguments()
 
-    # Collect questions from questions directory
-    df = get_all_questions("./questions")
+    # Collect questions from question directory
+    df = get_all_questions(args.questions_directory)
 
     # Prompt user to start
     time_seconds = get_time_in_seconds(args.time_for_problem)
@@ -117,7 +117,16 @@ def parse_arguments() -> argparse.Namespace:
     """Parses all command line arguments"""
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "time_for_problem", help="Integer number of minutes for the problem", type=int
+        "--time_for_problem",
+        help="Integer number of minutes for the problem",
+        default=0,
+        type=int
+    )
+    parser.add_argument(
+        "--questions_directory",
+        help="path to a directory containing questions",
+        default="./questions",
+        type=str
     )
     return parser.parse_args()
 
