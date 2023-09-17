@@ -44,5 +44,8 @@ usage: problem_picker.py [-h] time_for_problem
 problem_picker.py: error: the following arguments are required: time_for_problem
 ```
 
+## Example installation
+Should look like [this](https://gist.github.com/redpanda-ai/0c189909ed021dd86d6a4e2e9547682f)
+
 ## Still not working? Maybe we can help
 If something failed along the way, please confirm that you followed all instructions precisely. Also, feel free to file a bug with all of the relevant details, including which operating system, shell, and outputs you received from each command. Thanks!
