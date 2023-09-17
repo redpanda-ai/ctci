@@ -1,6 +1,6 @@
-# ctci
+# What is this tool?
 
-This tool serves as a training aid for **Cracking the Coding Interview, 6th Edition**. This tool serves as an aid for picking random pratice questions from her book, which you can find [here](http://shortn/_y6ydorMcDP).
+This tool serves as a training aid for those wanting to grab high quality coding interview questions for study. The random pratice questions come from Gayle Laakmann's book, [**Cracking the Coding Interview, 6th Edition**](http://shortn/_y6ydorMcDP), which I highly recommend that you purchase first, since it offers so much more than this tool.
 
 ## Demo Reel
 This tool operates from the command line, and should work on Windows, Mac OSX, and Linux. 
