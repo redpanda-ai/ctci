@@ -46,5 +46,12 @@ python problem_picker.py
 ```
 It may help to see what a successful installation looks like, so I have linked [this](https://gist.github.com/redpanda-ai/0c189909ed021dd86d6a4e2e9547682f) sample installation.
 
-## Still not working? Maybe we can help
-Maybe we can help. First, see if your issue is already on our [issues](https://github.com/redpanda-ai/ctci/issues) list. If not, please feel free to file a bug and include the terminal output from your installation attempt, preferably as a gist, along with any other relevant details (e.g., Operating System, software version, etc.).
+## Still not working?
+Maybe we can help. First, check for typos and look at the [sample installation] to see if it helps.
+Second, check to see if your issue is already on our [issues](https://github.com/redpanda-ai/ctci/issues) list. 
+Third, if there is no issue, please feel free to file a new issue which
+
+* includes the terminal output from your installation attempt, preferably as a gist
+* which operating system you are using
+* which version of the software you tried to install
+* anything else that you think might be helpful
