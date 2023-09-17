@@ -12,21 +12,29 @@ Here is an embedded YouTube video of it in action:
 
 ## Installation instructions
 
-1. Ensure you have `pipenv` installed. A comprehensive guide for installing Pipenv can be found [here](https://pipenv.pypa.io/en/latest/installation/).
+1. Clone this repository to get the latest version of the tool
+   ```sh
+   git clone https://github.com/redpanda-ai/ctci.git
+   ```
+2. Change your working directory to where the git repository was cloned.
+   ```sh
+   cd ctci
+   ```
+3. Ensure you have `pipenv` installed. A comprehensive guide for installing Pipenv can be found [here](https://pipenv.pypa.io/en/latest/installation/).
 
-2. Open a terminal and enter the following commands in order.
+4. Open a terminal and enter the following commands in order.
    
-3. Enter this command to install all packages from Pipfile
+5. Enter this command to install all packages from Pipfile
 ```sh
 pipenv install
 ```
 
-4. Enter this command to spawn a shell within the virtualenv
+6. Enter this command to spawn a shell within the virtualenv
 ```sh
 pipenv shell
 ```
 
-5. Enter this command to confirm that your installation succeeded, by issuing the following command
+7. Enter this command to confirm that your installation succeeded, by issuing the following command
 ```sh
 python problem_picker.py
 ```
