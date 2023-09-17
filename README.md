@@ -5,25 +5,29 @@ This tool serves as a training aid for those wanting to grab high quality coding
 ## Demo Reel
 This tool operates from the command line, and should work on Windows, Mac OSX, and Linux. 
 
-Here is an embedded YouTube video of it in action:
-
+Click the image below to watch a short YouTube video of the tool in action:
 
 [![](http://img.youtube.com/vi/U8GumpZ9LMk/0.jpg)](http://www.youtube.com/watch?v=U8GumpZ9LMk "Random Interview Question Picker")
 
-## Installation instructions
+## Installing Instructions
 
-1. Clone this repository to get the latest version of the tool
+### Part 1 - Installing Pipenv
+
+1. Install `pipenv` on your system using by following their [official documentation](https://pipenv.pypa.io/en/latest/installation/).
+
+
+### Part 2 - Use the terminal to install this software using git and pipenv
+
+2. Open a terminal and enter the following commands in order.
+ 
+3. Clone this repository to get the latest version of the tool
    ```sh
    git clone https://github.com/redpanda-ai/ctci.git
    ```
-2. Change your working directory to where the git repository was cloned.
+4. Change your working directory to where the git repository was cloned.
    ```sh
    cd ctci
-   ```
-3. Ensure you have `pipenv` installed. A comprehensive guide for installing Pipenv can be found [here](https://pipenv.pypa.io/en/latest/installation/).
-
-4. Open a terminal and enter the following commands in order.
-   
+   ```  
 5. Enter this command to install all packages from Pipfile
 ```sh
 pipenv install
@@ -34,18 +38,13 @@ pipenv install
 pipenv shell
 ```
 
+### Part 3 - Confirm your installation
+
 7. Enter this command to confirm that your installation succeeded, by issuing the following command
 ```sh
 python problem_picker.py
 ```
-If everything worked you should get a **usage** error similar to this
-```sh
-usage: problem_picker.py [-h] time_for_problem
-problem_picker.py: error: the following arguments are required: time_for_problem
-```
-
-## Example installation
-Should look like [this](https://gist.github.com/redpanda-ai/0c189909ed021dd86d6a4e2e9547682f)
+It may help to see what a successful installation looks like, so I have linked [this](https://gist.github.com/redpanda-ai/0c189909ed021dd86d6a4e2e9547682f) sample installation.
 
 ## Still not working? Maybe we can help
-If something failed along the way, please confirm that you followed all instructions precisely. Also, feel free to file a bug with all of the relevant details, including which operating system, shell, and outputs you received from each command. Thanks!
+ Also, feel free to file a bug with all of the relevant details, including which operating system, shell, and outputs you received from each command. Thanks!
