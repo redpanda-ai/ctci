@@ -1,8 +1,12 @@
 # ctci
 
-Serves as a training aid for **Cracking the Coding Interview, 6th Edition**.
+This tool serves as a training aid for **Cracking the Coding Interview, 6th Edition**. This tool serves as an aid for picking random pratice questions from her book, which you can find [here](http://shortn/_y6ydorMcDP).
 
-Use the included ```environment.yml``` file to create a conda virtual environment
+## Demo Reel
+This tool operates from the command line, and should work on Windows, Mac OSX, and Linux. 
+
+Here is an embedded YouTube video of it in action:
+
 
 [![](http://img.youtube.com/vi/U8GumpZ9LMk/0.jpg)](http://www.youtube.com/watch?v=U8GumpZ9LMk "Random Interview Question Picker")
 
