@@ -49,16 +49,18 @@ It may help to see what a successful installation looks like, so I have linked [
 
 ## Still not working?
 
-**Maybe** we can help. 
+**Maybe** we can help. Start with the following steps:
 
-Start with the following steps:
-1. Compare your attempted installation with the [sample installation](https://gist.github.com/redpanda-ai/0c189909ed021dd86d6a4e2e9547682f). 
+* Compare your attempted installation with the [sample installation](https://gist.github.com/redpanda-ai/0c189909ed021dd86d6a4e2e9547682f). 
 
-2. Check to see if your issue is already present on our [issues](https://github.com/redpanda-ai/ctci/issues) list. 
+* Check to see if your issue is already present on our [issues](https://github.com/redpanda-ai/ctci/issues) list. 
 
-3. If all else fails, file a new issue which
+* If all else fails, file a new issue which
 
-* includes the terminal output from your installation attempt, preferably as a gist
-* states which operating system you are using
-* states which version / release of the software you tried to install
-* anything else that you think might be helpful
+  * includes the terminal output from your installation attempt, preferably as a gist
+  
+  * states which operating system you are using
+  
+  * states which version / release of the software you tried to install
+  
+  * anything else that you think might be helpful
