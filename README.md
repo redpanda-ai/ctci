@@ -15,7 +15,7 @@ Click the image below to watch a short YouTube video of the tool in action:
 
 1. Install `pipenv` on your system using by following their [official documentation](https://pipenv.pypa.io/en/latest/installation/).
 
-2. Install `git` on your system using the [Install Git guide]([https://git-scm.com/book/en/v2/Getting-Started-Installing-Git](https://github.com/git-guides/install-git).
+2. Install `git` on your system using the [Install Git guide](https://github.com/git-guides/install-git).
 
 
 ### Part 2 - Now, install the ctci tool via the command line interface (CLI)
