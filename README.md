@@ -48,11 +48,17 @@ Please enter the following commands in a CLI terminal:
 It may help to see what a successful installation looks like, so I have linked [this](https://gist.github.com/redpanda-ai/0c189909ed021dd86d6a4e2e9547682f) sample installation.
 
 ## Still not working?
-Maybe we can help. First, check for typos and look at the [sample installation] to see if it helps.
-Second, check to see if your issue is already on our [issues](https://github.com/redpanda-ai/ctci/issues) list. 
-Third, if there is no issue, please feel free to file a new issue which
+
+**Maybe** we can help. 
+
+Start with the following steps:
+1. Compare your attempted installation with the [sample installation](https://gist.github.com/redpanda-ai/0c189909ed021dd86d6a4e2e9547682f). 
+
+2. Check to see if your issue is already present on our [issues](https://github.com/redpanda-ai/ctci/issues) list. 
+
+3. If all else fails, file a new issue which
 
 * includes the terminal output from your installation attempt, preferably as a gist
-* which operating system you are using
-* which version of the software you tried to install
+* states which operating system you are using
+* states which version / release of the software you tried to install
 * anything else that you think might be helpful
